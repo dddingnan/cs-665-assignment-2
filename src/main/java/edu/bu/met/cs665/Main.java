@@ -10,6 +10,11 @@ package edu.bu.met.cs665;
 
 import edu.bu.met.cs665.observer.*;
 import edu.bu.met.cs665.subject.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.bu.met.cs665.loader.FileLoader;
 import edu.bu.met.cs665.model.*;
 
 /**
@@ -22,18 +27,13 @@ public class Main {
    */
   public static void main(String[] args) throws InvalidDataException, InterruptedException {
     Shop shop = new Shop();
-    // Register 5 driver observers
-    Driver driver1 = new Driver("John");
-    Driver driver2 = new Driver("Jane");
-    Driver driver3 = new Driver("Doe");
-    Driver driver4 = new Driver("Alice");
-    Driver driver5 = new Driver("Bob");
+    FileLoader loader = new FileLoader();
+    List<Driver> drivers = new ArrayList<>();
+    drivers = loader.loadDriverFile("src/data/driver.csv");
 
-    shop.registerObserver(driver1);
-    shop.registerObserver(driver2);
-    shop.registerObserver(driver3);
-    shop.registerObserver(driver4);
-    shop.registerObserver(driver5);
+    for (Driver driver : drivers) {
+      shop.registerObserver(driver);
+    }
 
     System.out.println("New Order Request: " + "New delivery for downtown");
     System.out.println("--------------------------------------------------------");
@@ -41,6 +41,19 @@ public class Main {
     DeliveryRequest request = new DeliveryRequest("New delivery for downtown");
     shop.newDeliveryRequest(request);
     System.out.println("--------------------------------------------------------");
-    // TODO Add delete last one driver and sent a new order request again
+    // Remove the last driver from the list of drivers
+    Driver lastDriver = drivers.remove(drivers.size() - 1);
+    shop.removeObserver(lastDriver);
+
+    System.out.println("Removed the last driver: " + lastDriver.getName());
+    System.out.println("--------------------------------------------------------");
+
+    // Send a new order request after removing the last driver
+    System.out.println("New Order Request: " + "Another delivery for uptown");
+    System.out.println("--------------------------------------------------------");
+    DeliveryRequest newRequest = new DeliveryRequest("Another delivery for uptown");
+    shop.newDeliveryRequest(newRequest);
+    System.out.println("--------------------------------------------------------");
+
   }
 }

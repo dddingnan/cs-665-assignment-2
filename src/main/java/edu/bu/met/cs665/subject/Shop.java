@@ -26,7 +26,9 @@ public class Shop implements Subject {
     @Override
     public void notifyObservers() {
         for (Observer observer : observers) {
-            observer.update(deliveryRequest);
+            if (observer.isAvailable()) {
+                observer.update(deliveryRequest);
+            }
         }
     }
 
