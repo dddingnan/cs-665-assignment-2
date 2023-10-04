@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import edu.bu.met.cs665.exception.InvalidDataException;
+
 public class UserInterface {
     private List<Beverage> beverages;
     private List<Condiment> sugar;

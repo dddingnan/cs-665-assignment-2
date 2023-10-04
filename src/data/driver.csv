@@ -1,9 +1,9 @@
-Van Driver, true
-Taxi Driver, true
-Scooter Driver, true
-Bicycle Driver, true
-Motorcycle Driver, true
-Truck Driver, true
-Walking Courier, false
-Boat Driver, false
-Hoverboard Courier, true
+1, Van Driver, true
+2, Taxi Driver, true
+3, Scooter Driver, true
+4, Bicycle Driver, true
+5, Motorcycle Driver, true
+6, Truck Driver, true
+7, Walking Courier, false
+8, Boat Driver, false
+9, Hoverboard Courier, true

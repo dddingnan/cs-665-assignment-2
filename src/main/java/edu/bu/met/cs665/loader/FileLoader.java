@@ -16,8 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.bu.met.cs665.exception.InvalidDataException;
 import edu.bu.met.cs665.observer.*;
-import edu.bu.met.cs665.InvalidDataException;
 
 public class FileLoader {
 
@@ -26,7 +26,7 @@ public class FileLoader {
 
     /**
      * Loads drivers data from a given CSV file.
-     * The CSV file format: "<driver_name>,<is_available>".
+     * The CSV file format: "<driver_id>,<driver_name>,<is_available>".
      *
      * @param fileName Name of the file to be read.
      * @return A list of Driver objects.
@@ -41,13 +41,15 @@ public class FileLoader {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(","); // Split the line by commas
-                if (data.length < 2) {
+                if (data.length < 3) { // Ensure you have ID, name, and availability data
                     System.out.println("Invalid data format: " + line);
                     continue; // Skip this line and continue with the next line
                 }
-                String name = data[0];
-                boolean isAvailable = Boolean.parseBoolean(data[1].trim()); // Convert the string to a boolean
-                drivers.add(new Driver(name, isAvailable));
+                int id = Integer.parseInt(data[0].trim()); // Parse the ID as an integer
+                String name = data[1].trim();
+                boolean isAvailable = Boolean.parseBoolean(data[2].trim()); // Convert the string to a boolean
+
+                drivers.add(new Driver(id, name, isAvailable));
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + fileName);
@@ -55,6 +57,9 @@ public class FileLoader {
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
             return new ArrayList<>(); // Return an empty list in case of IO errors
+        } catch (NumberFormatException e) {
+            System.out.println("Error parsing driver ID: " + e.getMessage());
+            return new ArrayList<>(); // Return an empty list in case of parsing errors
         }
 
         return drivers;

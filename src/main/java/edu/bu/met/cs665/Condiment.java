@@ -9,6 +9,8 @@
 
 package edu.bu.met.cs665;
 
+import edu.bu.met.cs665.exception.InvalidDataException;
+
 public class Condiment {
     private String name;
     private double price;
