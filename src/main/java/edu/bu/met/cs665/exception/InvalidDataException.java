@@ -1,14 +1,14 @@
 /**
  * Name: Dingnan Hsu
  * Course: CS-665 Software Designs & Patterns
- * Date: 09/21/2023
+ * Date: 10/03/2023
  * File Name: InvalidDataException.java
  * Description: A specialized exception class derived from BaseInvalidDataException. 
  * It captures both the type and the specific invalid value of data causing the exception.
  * The class provides methods to retrieve the data type and invalid value.
  */
 
-package edu.bu.met.cs665;
+package edu.bu.met.cs665.exception;
 
 public class InvalidDataException extends BaseInvalidDataException {
     private static final long serialVersionUID = 1L;
