@@ -8,6 +8,7 @@
  */
 package edu.bu.met.cs665.subject;
 
+import edu.bu.met.cs665.model.DeliveryRequest;
 import edu.bu.met.cs665.observer.Observer;
 
 public interface Subject {
@@ -31,4 +32,9 @@ public interface Subject {
      * Notify all registered observers of a change or update.
      */
     void notifyObservers();
+
+    /**
+     * Create a new delivery request and notify all registered observers.
+     */
+    void newDeliveryRequest(DeliveryRequest request);
 }
