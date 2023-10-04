@@ -1,6 +1,15 @@
+/**
+ * Name: Dingnan Hsu
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 10/03/2023
+ * File Name: DeliveryRequest.java
+ * Description: The DeliveryRequest class encapsulates the details of a delivery request made by a customer.
+ * It contains information about the product, pick-up and destination addresses, customer details, and a general description of the request.
+ */
 package edu.bu.met.cs665.model;
 
 public class DeliveryRequest {
+
     private String description;
     private String productName;
     private String destinationAddress;
@@ -8,6 +17,17 @@ public class DeliveryRequest {
     private String customerName;
     private String customerContact;
 
+    /**
+     * Constructs a new DeliveryRequest with all necessary details.
+     *
+     * @param description        A brief description of the delivery request.
+     * @param productName        The name or description of the product to be
+     *                           delivered.
+     * @param destinationAddress The address where the product should be delivered.
+     * @param pickupAddress      The address where the product should be picked up.
+     * @param customerName       The name of the customer requesting the delivery.
+     * @param customerContact    Contact details of the customer.
+     */
     public DeliveryRequest(String description, String productName, String destinationAddress,
             String pickupAddress, String customerName, String customerContact) {
         this.description = description;
