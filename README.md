@@ -7,7 +7,7 @@
 
 # Assignment Overview
 
-// TODO
+City retailers have teamed up with local freelance drivers for product deliveries. Develop a system to alert drivers about these requests. When a store gets a delivery order, a notification should be sent to all available drivers.
 
 # GitHub Repository Link:
 
@@ -30,16 +30,13 @@ For each assignment, please answer the following:
 ### `Answer`
 
 1. `Flexibility`
-   - `Generic Objects`: Beverage and Condiment objects are designed to be versatile. Adding new types of beverages or condiments is as easy as creating new instances of these objects or updating CSV files.
-   - `CSV Data Storage`: Using CSV files for data storage makes it simple to add, modify, or remove beverages and condiments without changing the core code.
+   - `CSV Data Storage`: Using CSV files for data storage makes it simple to add, modify, or remove drivers without changing the core code. For instance, if we wish to incorporate new types of drivers, such as drone pilots, we simply need to ensure that the new driver class implements the Observer interface by adding into the CSV files.
 2. `Simplicity & Understandability`
-   - The main interaction point, the UserInterface, lead the user through the system, just like the logical flow that expect from an actual vending machine.
+   - By using the observer pattern, ensuring each class has a single responsibility. This not only makes the code easier to read but also ensures that other developers can maintain and expand upon it without extensive effort.
 3. `Avoidance of Duplicated Code`
-   - By separating classes for different functionalities. For instance, FileLoader takes care of all file-loading operations, ensuring that there's no repetition of file reading logic.
-   - The use of generic classes like Beverage and Condiment prevents the need to create separate classes for each type of beverage or condiment, minimizing redundancy.
-   - Avoiding duplicated code is essential for maintaining the application efficiently. When changes or bug fixes are required, you'll only have to make them in one place, reducing the risk of errors and inconsistencies.
+   - Through `the use of interfaces` and `class inheritance`, duplicated code has been minimized.
 4. `Design patterns`
-   - `Factory Pattern`: The FileLoader class abstracts away the details of object creation from CSV files, providing an easy and consistent way to generate data objects. [This is to deal with the problem of creating objects without having to specify the exact class of the object that will be created.](https://en.wikipedia.org/wiki/Factory_method_pattern)
+   - `Observer Pattern`: This choice was made to ensure a clear separation between shops (or subjects) and drivers (or observers). When a shop has a new delivery request, it broadcasts this request to all available drivers. [When one object changes state, an open-ended number of dependent objects should be updated automatically.](https://en.wikipedia.org/wiki/Observer_pattern)
 
 ## UML Diagram
 
